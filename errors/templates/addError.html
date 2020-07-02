@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Erros</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    
+    
+    {% load static %}
+    <link rel="stylesheet" href= "{% static "addError.css" %}" type="text/css">    
+    <link rel="stylesheet" href= "{% static "base.css" %}" type="text/css">
+</head> 
+<body>
+    <header>
+        <h2>Bem vindo {{user}}. <span> Seu token é </span> <span> {{token}}.</span></h2> 
+        
+        <div>
+            <a href="/index"><span> Voltar </span> </a>
+
+            <a href="/logout" > <span> Sair </span></a>
+        </div>
+    </header>
+
+    <div class="forms">
+     
+        <h2>
+            <strong>Adicionar Erro</strong>
+        </h2>
+
+        <form method="post">    
+            {% csrf_token%}
+            
+            <label>Título:</label>
+            <input type="text" name="title" required>
+            <p>
+                <label>Categoria:</label>    
+                <select name="category" required>
+                    <option value="">Selecione a categoria</option>
+                    <option value="PRODUÇÃO">Produção</option>
+                    <option value="HOMOLOGAÇÃO">Homologação</option>
+                    <option value="DEV">Dev</option>
+                </select>
+            </p>
+
+              
+            <p>
+                <label class="level">Level:</label>
+                <select name="level" required>
+                    <option value="">Selecione o level</option>
+                    <option value="ERROR">Error</option>
+                    <option value="WARNING">Warning</option>
+                    <option value="DEBUG">Debug</option>
+                </select>
+                
+            </p>
+            <label >Descrição:</label>
+            <input type="text" name="description" required>
+
+            {% for field in login_form%}
+                {% for error in field.errors %}
+                    <p style="color: red;">{{error}}</p>
+                {% endfor %}
+            {% endfor %}
+
+            {% if login_form.non_field_errors %}
+                <div style="color: red;">
+                    <p>{{login_form.non_field_errors}}</p>
+                </div>  
+            {% endif%}
+            <input type="submit" value="Adicionar Erro">
+        </form>
+            
+    </div>
+
+
+</body>
+</html>

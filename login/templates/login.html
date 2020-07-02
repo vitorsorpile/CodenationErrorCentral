@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Erros</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet"> 
+    {% load static %}
+    <link rel="stylesheet" href= "{% static "login.css" %}" type="text/css">
+</head>
+
+    <body>
+        <header>
+
+            <h1>
+                <strong>Central de Erros</strong>
+            </h1>
+            
+        </header>
+            
+        <div class="forms">
+
+            <h2>
+                <strong>Login</strong>
+            </h2>
+
+            <form method="post" name="Login">
+                {% csrf_token %}
+
+                <input type="text" name="email" placeholder="Email" required >
+
+                <input type="password" name="password" placeholder="Senha" required>
+
+                {% for field in login_form%}
+                    {% for error in field.errors %}
+                        <p style="color: red;">{{error}}</p>
+                    {% endfor %}
+                {% endfor %}
+
+                {% if login_form.non_field_errors %}
+                    <div style="color: red;">
+                        <p>{{login_form.non_field_errors}}</p>
+                    </div>  
+                {% endif%}
+                <input type="submit" value="Login">
+                
+            <br><a href="/cadastro">Não tem uma conta? Cadastre-se</a>
+            </form>
+            
+        </div>
+            
+    </body>
+</html>

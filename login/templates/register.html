@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Central de Erros</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;700&display=swap" rel="stylesheet">
+    {% load static %}
+<link rel="stylesheet" href= "{% static "login.css" %}" type="text/css">
+
+</head>
+<body>
+    <header>
+
+        <h1>
+            <strong>Central de Erros</strong>
+        </h1>
+        
+    </header>
+    <div class="forms">
+        <form method="post" name="Register">
+            {% csrf_token %}
+            
+            <h2>
+                <strong>Cadastro</strong>
+            </h2>
+            
+            <!-- <label for="username">Usuário:</label><br> -->
+            <input type="text" name="username" placeholder="Nome" required>
+            
+            <input type="email" name="email" placeholder="Email" required>
+            <!-- <label for="password">Senha:</label><br> -->
+            <input type="password" name="password1" placeholder="Senha" required>
+            
+            <input type="password" name="password2" placeholder="Confirme a senha" required>
+            
+            {% for field in registration_form %}
+            <p>
+                {% for error in field.errors %}
+                    <p style="color:red;">{{error}}</p>
+                {% endfor %}
+            </p>
+            {% endfor %}
+            
+            {% if registration_form.non_field_errors %}
+                <p style="color: red;">{{registration_form.non_field_errors}}</p>            
+            {% endif %}
+            <input type="submit" value="Cadastrar">
+            <!-- <button type="submit">Cadastrar</button> -->
+            <!-- <input class = "subBtn"type="submit" value="Cadastrar">  -->
+        </form>
+        
+    </div>
+</body>
+</html>

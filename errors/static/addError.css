@@ -1,0 +1,111 @@
+body
+{
+    font-family: 'Roboto', sans-serif;
+    color: #322153;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+h2
+{   
+    margin-left: 16px;
+    margin-top: 25px;
+
+    font-size: 30px ;
+}
+
+header 
+{
+    height: 60px;
+    background: #f0f0f5;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header a 
+{
+    font-size: 24px;
+    font-weight: 700;
+    color: #322153;
+}
+
+.forms
+{   
+    background-color: #f0f0f5;
+    margin: auto;
+    margin-top: 80px;
+
+    padding-bottom: 30px;
+    display: flex; 
+    flex-direction: column;
+    border-radius: 8px;
+    max-width: 560px;
+    align-items: center;
+    text-align: center;
+}
+.forms label
+{   
+    margin-left: 30px;
+    text-align: left;
+    font-size: 20px;
+    
+    float: left;
+}
+.forms select
+{   
+    margin-bottom: 16px;
+    
+    width: 200px;
+}
+.level
+{
+    margin-right: 39.65px;
+}
+ul
+{
+    text-align: center; 
+    list-style-type: none;
+
+    margin: -10px 0 20px;
+    padding: 0;
+}
+
+form input
+{
+    
+    
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    
+    margin-bottom: 30px;
+}
+
+form input[type=submit]
+{   
+    width: 246px; 
+    margin-bottom: 30px;
+    background-color: white;
+    color: #2F4F4F;
+    transition: background-color 400ms;
+}
+
+form input[type=submit]:hover
+{
+    background-color: #d7d7db;
+}
+
+form input[value=Cadastrar]
+{
+    margin-bottom: 0;
+}

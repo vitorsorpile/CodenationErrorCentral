@@ -1,0 +1,101 @@
+body
+{
+    background: #f0f0f5;
+}
+
+h1, h2, a
+{
+    font-family: 'Roboto', sans-serif;
+
+    color: #322153;
+}
+h1
+{
+    font-size: 50px;
+}
+
+h2
+{
+    font-size: 35px;
+}
+
+a
+{   
+    text-decoration: none;
+}
+
+p
+{
+    margin: 0;
+}
+
+header
+{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+
+.forms
+{
+    background-color: white;
+    
+    margin: auto;
+    padding-bottom: 30px;
+    display: flex; 
+    flex-direction: column;
+    border-radius: 8px;
+    max-width: 430px;
+    align-items: center;
+    text-align: center;
+}
+
+ul
+{
+    text-align: center; 
+    list-style-type: none;
+
+    margin: -10px 0 20px;
+    padding: 0;
+}
+
+form input
+{
+    background-color: #f0f0f5;
+    
+    border: 0;
+    padding: 16px 24px;
+    font-size: 16px;
+    border-radius: 8px;
+    
+    margin-bottom: 30px;
+}
+
+form input[type=submit]
+{   
+    width: 246px; 
+    margin-bottom: 30px;
+    background-color: #f0f0f5;
+    color: #2F4F4F;
+    transition: background-color 400ms;
+}
+
+form input[type=submit]:hover
+{
+    background-color: #d7d7db;
+}
+
+form input[value=Cadastrar]
+{
+    margin-bottom: 0;
+}
+
+@media(max-width: 478px)
+{
+    header
+    {   
+        text-align: center;
+        margin-bottom: 0;
+    }
+
+}
