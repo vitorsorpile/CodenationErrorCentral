@@ -21,6 +21,33 @@
         </header>
   
         <main>
+
+            <div class="search-bar">
+                <form method="get">
+
+                    <select name="category" onchange="this.form.submit()">
+                        {% for cat in categories%}
+                        <option value="{{ cat.0 }}" {% if cat.0 == selectedCategory %} selected {% endif %}>{{ cat.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    <select name="orderBy" onchange="this.form.submit()">
+                        {% for ord in order %}
+                        <option value="{{ ord.0 }}" {% if ord.0 == selectedOrder %} selected {% endif %}>{{ ord.1 }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <select name="searchBy">
+                        {% for s in search %}
+                        <option value="{{ s.0 }}" {% if s.0 == selectedSearch %} selected {% endif %}>{{ s.1 }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                    <input type="text" name="query" value="{{query}}">
+                     
+                </form>
+            </div>
+            
             <table>
                 <thead>
                     <tr>
@@ -41,7 +68,7 @@
                             </td>  
                             <td class="small">
                                 <span class="span-wh">
-                                    <a href="/archive/{{error.pk}}">Arquivar</a> 
+                                    <a href="/archive/{{error.pk}}"> {% if not error.archived %} Arquivar {% else %} Desarquivar {% endif %}</a> 
                                 </span><br> <br>
                                 <span class="span-wh">
 
