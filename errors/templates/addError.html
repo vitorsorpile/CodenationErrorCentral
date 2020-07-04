@@ -31,7 +31,7 @@
         <form method="post">    
             {% csrf_token%}
             
-            <label>Título:</label>
+            <p><label>Título:</label></p> 
             <input type="text" name="title" required>
             <p>
                 <label>Categoria:</label>    
@@ -51,21 +51,28 @@
                     <option value="ERROR">Error</option>
                     <option value="WARNING">Warning</option>
                     <option value="DEBUG">Debug</option>
-                </select>
-                
+                </select>    
             </p>
-            <label >Descrição:</label>
-            <input type="text" name="description" required>
+            
+            <p>
+                <label>Descrição:</label>
+                <input type="text" name="description" required>
+            </p>
+            
+            <p>
+                <label>Endereço:</label>
+                <input type="text" name="address" required>
+            </p>
 
-            {% for field in login_form%}
+            {% for field in form%}
                 {% for error in field.errors %}
                     <p style="color: red;">{{error}}</p>
                 {% endfor %}
             {% endfor %}
 
-            {% if login_form.non_field_errors %}
+            {% if form.non_field_errors %}
                 <div style="color: red;">
-                    <p>{{login_form.non_field_errors}}</p>
+                    <p>{{form.non_field_errors}}</p>
                 </div>  
             {% endif%}
             <input type="submit" value="Adicionar Erro">

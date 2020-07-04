@@ -70,19 +70,10 @@ header a
 {
     margin-right: 39.65px;
 }
-ul
-{
-    text-align: center; 
-    list-style-type: none;
-
-    margin: -10px 0 20px;
-    padding: 0;
-}
 
 form input
 {
-    
-    
+   
     border: 0;
     padding: 16px 24px;
     font-size: 16px;
@@ -105,7 +96,3 @@ form input[type=submit]:hover
     background-color: #d7d7db;
 }
 
-form input[value=Cadastrar]
-{
-    margin-bottom: 0;
-}
