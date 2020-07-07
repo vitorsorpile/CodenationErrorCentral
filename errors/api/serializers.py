@@ -16,7 +16,7 @@ class ErrorSerializer(serializers.ModelSerializer):
         model = Error
         fields = [
             'id', 'title', 'category', 'level', 'archived',
-            'description', 'address', 'date', 'email']
+            'description', 'address', 'date', 'events', 'email']
 
     def get_user_email(self, error):
         return error.user.email

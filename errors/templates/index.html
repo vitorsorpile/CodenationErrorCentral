@@ -51,26 +51,26 @@
             <table>
                 <thead>
                     <tr>
-                        <th>Level</th>
+                        <th style="width: 15%;">Level</th>
                         <th>Log</th>
-                        <th>Eventos</th>
-                        <th>Ações</th>
+                        <th style="width: 10%;">Eventos</th>
+                        <th style="width: 10%;">Ações</th>
                     </tr>
                 </thead>
                 
                 <tbody>
                     {% for error in errors%}
                         <tr>
-                            <td style="width: 15%;"> <span> {{error.level}} </span></td>
+                            <td> <span> {{error.level}} </span></td>
                             <td>
                                 <a href="/error/{{error.pk}}" class="title">{{error.title}}</a> <br>
                                 {{error.address}} <br>
                                 {{error.date|date:"d/m/Y H:i:s"}}
                             </td>  
-                            <td style="width: 10%; font-size: 20px;">
+                            <td style="font-size: 20px;">
                                 {{error.events}}
                             </td>
-                            <td style="width: 10%;">
+                            <td>
                                 <span class="span-wh">
                                     <a href="/archive/{{error.pk}}"> {% if not error.archived %} Arquivar {% else %} Desarquivar {% endif %}</a> 
                                 </span><br> <br>
@@ -83,7 +83,7 @@
                     
                     {% empty %}
                         <tr>
-                            <td colspan=3>Não há erros cadastrados.</td>
+                            <td colspan=4>Não há erros cadastrados.</td>
                         </tr>
                     {% endfor %}
                 </tbody>

@@ -30,7 +30,8 @@ def index_view(request, archived=False):
     selectedCategory = None
     
     context['order'] = [('', 'Ordenar por'), ('level', 'Level'),
-                        ('date', 'Mais antigo'), ('-date', 'Mais recente')
+                        ('date', 'Mais antigo'), ('-date', 'Mais recente'),
+                        ('-events', 'Frequência')
                        ]
     selectedOrder = None
     
