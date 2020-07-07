@@ -14,7 +14,7 @@ class ErrorApiViewSet(viewsets.ModelViewSet):
     serializer_class = ErrorSerializer
 
 
-def index_view(request):
+def index_view(request, archived=False):
     user = request.user
     if not user.is_authenticated:
         return redirect('login')
@@ -51,7 +51,8 @@ def index_view(request):
     context['selectedSearch'] = selectedSearch
     context['query'] = query
 
-    errors = get_errors_by_category(selectedCategory).filter(user=user.pk, archived=False)
+    errors = get_errors_by_category(selectedCategory).filter(user=user.pk,
+                                                        archived=archived)
     errors = get_error_queryset(errors, query, selectedSearch)
     
     if selectedOrder:
@@ -143,52 +144,8 @@ def detail_error_view(request, error_id):
 
 
 def archived_errors_view(request):
-    user = request.user
-
-    if not user.is_authenticated:
-        return redirect('login')
-
-    context = {}
-
-    token = Token.objects.get(user=user.pk)
-    context['token'] = token
+    return index_view(request, archived=True)
     
-    context['categories'] = [('', 'Selecionar categoria'), ('PRODUÇÃO', 'Produção'),
-                             ('HOMOLOGAÇÃO', 'Homologação'), ('DEV', 'Dev')
-                            ]
-    selectedCategory = None
-    
-    context['order'] = [('', 'Ordenar por'), ('level', 'Level'),
-                        ('date', 'Mais antigo'), ('-date', 'Mais recente')
-                       ]
-    selectedOrder = None
-    
-    context['search'] = [('', 'Buscar por'), ('title', 'Título'),
-                         ('description', 'Descrição'), ('address', 'Origem')
-                        ]
-    selectedSearch = None
-
-    query = ''
-    if request.GET:
-        selectedCategory = request.GET['category']  
-        selectedOrder = request.GET['orderBy']
-        selectedSearch = request.GET['searchBy']
-        query = request.GET['query']
-
-    context['selectedCategory'] = selectedCategory
-    context['selectedOrder'] = selectedOrder
-    context['selectedSearch'] = selectedSearch
-    context['query'] = query
-
-    errors = get_errors_by_category(selectedCategory).filter(user=user.pk, archived=True)
-    errors = get_error_queryset(errors, query, selectedSearch)
-    
-    if selectedOrder:
-        errors = errors.order_by(selectedOrder)
-
-    context['errors'] = errors
-    return render(request, 'index.html', context=context)
-
 
 def get_errors_by_category(category=None):
     if category:
