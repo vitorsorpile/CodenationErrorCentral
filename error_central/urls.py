@@ -24,10 +24,10 @@ from errors.views import (index_view, add_error_view, delete_error_view,
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', login_view, name='login'),
+    path('login/', login_view, name='login'),
     path('cadastro/', register_view, name='register'),
     path('logout/', logout_view),
-    path('index/', index_view, name='index'),
+    path('', index_view, name='index'),
     path('adderror/',add_error_view, name='add'),
     path('delete/<int:error_id>', delete_error_view, name='delete'),
     path('archive/<int:error_id>', archive_error_view, name='archive'),
@@ -38,5 +38,5 @@ urlpatterns = [
 
 
     path('api/error/', include('errors.api.urls', 'error_api')),
-    path('api/user/', include('login.api.urls', 'user_api')),
+    path('api/auth/', include('login.api.urls', 'auth_api')),
 ]

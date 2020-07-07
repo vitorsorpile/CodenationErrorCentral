@@ -4,7 +4,7 @@ from login.api.views import(
 )
 from rest_framework.authtoken.views import obtain_auth_token
 
-app_name = 'user'
+app_name = 'auth'
 
 urlpatterns = [
         path('register', register_view),
