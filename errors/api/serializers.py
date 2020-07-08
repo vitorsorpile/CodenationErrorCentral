@@ -20,3 +20,11 @@ class ErrorSerializer(serializers.ModelSerializer):
 
     def get_user_email(self, error):
         return error.user.email
+
+class SimpleErrorSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Error
+        fields = [
+            'id', 'title', 'category', 'level',
+            'address', 'date', 'events'
+        ]

@@ -5,11 +5,10 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.pagination import PageNumberPagination
 from rest_framework.generics import ListAPIView
-from rest_framework.filters import SearchFilter, OrderingFilter
 
 from login.models import User
 from errors.models import Error
-from errors.api.serializers import UserSerializer, ErrorSerializer
+from errors.api.serializers import SimpleErrorSerializer, ErrorSerializer
 
 @api_view(['GET'])
 @permission_classes([IsAuthenticated])
@@ -120,10 +119,32 @@ def api_update_error_view(request, error_id):
 
 
 class ApiErrorListView(ListAPIView):
-    queryset = Error.objects.filter(archived=False)
-    serializer_class = ErrorSerializer
+    serializer_class = SimpleErrorSerializer
     authentication_classes = [TokenAuthentication]
     permission_classes = [IsAuthenticated]
     pagination_class = PageNumberPagination
-    filter_backends = [SearchFilter, OrderingFilter]
-    search_fields = ['title', 'description', 'address']
+
+    def get_queryset(self):
+        order_fields = ['level', 'date', '-date', '-events']
+        search_fields = ['title', 'description', 'address'] 
+        query_params = self.request.query_params
+        
+        queryset = Error.objects.filter(archived=False)
+
+        if query_params:
+            category = query_params.get('category', None)
+            orderBy = query_params.get('orderBy', None)
+            searchBy = query_params.get('searchBy', None)
+            search = query_params.get('search', None)
+
+            if category:
+                queryset = queryset.filter(category=category)
+            if searchBy in search_fields and search:
+                query = searchBy + '__icontains'
+                queryset = queryset.filter(**{query: search})
+            if orderBy in order_fields:
+                queryset = queryset.order_by(orderBy)
+        
+        return queryset
+
+
