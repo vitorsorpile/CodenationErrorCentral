@@ -7,6 +7,6 @@ from rest_framework.authtoken.views import obtain_auth_token
 app_name = 'auth'
 
 urlpatterns = [
-        path('register', register_view),
-        path('login', obtain_auth_token),
+        path('register', register_view, name='register'),
+        path('login', obtain_auth_token, name='login'),
 ]

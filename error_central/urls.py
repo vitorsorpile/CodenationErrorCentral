@@ -33,9 +33,6 @@ urlpatterns = [
     path('archive/<int:error_id>', archive_error_view, name='archive'),
     path('error/<int:error_id>', detail_error_view),
     path('archived/', archived_errors_view),
-    #path('api/', include(('errors.urls', 'errors'), namespace='errors')),
-    # path('accounts/', include('django.contrib.auth.urls')),
-
 
     path('api/error/', include('errors.api.urls', 'error_api')),
     path('api/auth/', include('login.api.urls', 'auth_api')),

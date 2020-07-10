@@ -18,6 +18,7 @@ def register_view(request):
             data['email'] = user.email
             data['token'] = Token.objects.get(user=user).key
         else:
-            data = serializer.errors    
+            data = serializer.errors
+            return Response(data, status=status.HTTP_400_BAD_REQUEST)    
 
-        return Response(data, status=201)
+        return Response(data, status=status.HTTP_201_CREATED)
