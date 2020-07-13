@@ -52,8 +52,7 @@ def index_view(request, archived=False):
     context['selectedSearch'] = selectedSearch
     context['query'] = query
 
-    errors = get_errors_by_category(selectedCategory).filter(user=user.pk,
-                                                        archived=archived)
+    errors = get_errors_by_category(selectedCategory).filter(archived=archived)
     errors = get_error_queryset(errors, query, selectedSearch)
     
     if selectedOrder:
@@ -135,8 +134,6 @@ def detail_error_view(request, error_id):
         return redirect('login')
 
     error = Error.objects.get(pk = error_id)
-    if user != error.user:
-        return redirect('index')
     
     context['error'] = error
     errorUser = Token.objects.get(user = error.user.pk)

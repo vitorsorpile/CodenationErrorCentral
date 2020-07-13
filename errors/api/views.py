@@ -35,9 +35,6 @@ def api_get_delete_archive_error_view(request, error_id):
                             status=status.HTTP_400_BAD_REQUEST)
 
     if request.method == 'PUT':
-        if request.user != error.user:
-            return Response({'Response': 'You don\'t permission to do this.'},
-                            status= status.HTTP_401_UNAUTHORIZED)
         
         error.archived = True
         error.save()
