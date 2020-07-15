@@ -1,0 +1,1 @@
+web: gunicorn error_central.wsgi --max-requests 1200

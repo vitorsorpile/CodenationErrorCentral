@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.permissions import IsAuthenticated
-import requests
 
 from login.forms import RegistrationForm, UserAuthenticationForm
 
