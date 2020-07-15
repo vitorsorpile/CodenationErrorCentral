@@ -19,7 +19,7 @@ class Error(models.Model):
     level       = models.CharField(max_length=16, choices=LEVEL_CHOICES)
     archived    = models.BooleanField(default=False)
     description = models.TextField()
-    address     = models.GenericIPAddressField(max_length=39, protocol='IPv4')
+    address     = models.GenericIPAddressField(max_length=39)
     date        = models.DateTimeField(auto_now_add= True)
     events      = models.PositiveIntegerField(default=1)
     user        = models.ForeignKey(User, on_delete=models.CASCADE)
