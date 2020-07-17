@@ -24,11 +24,11 @@
 
     <main>
         <div class="teste">
-            <h1>Erro no {{erro.address}}*IPv4* em {{error.date|date:"d/m/Y H:i:s"}}</h1>
+            <h1>Erro no {{error.address}} em {{error.date|date:"d/m/Y H:i:s"}}</h1>
         </div>
         <div class="grid-container">
 
-            <div class="grid-item right">
+            <div class="grid-item left">
                 <h3>Título</h3>
                 {{error.title}} 
             </div>
@@ -37,17 +37,29 @@
                 <h3>Categoria</h3>
                 <span>{{error.category}}</span>
             </div>
-
-            <div class="grid-item right">
+            
+            <div class="grid-item left">
                 <h3>Detalhes</h3>
                 {{error.description}}
             </div>
 
             <div class="grid-item">
+                <h3>Eventos</h3>
+                {{error.events}}
+            </div>
+
+            <div class="grid-item">
+                <h3>Coletado por</h3>
+                {{error.user}} - {{errorUser}}
+            </div>
+
+
+
+            <!-- <div class="grid-item">
                 <h3>Coletado por</h3>
                 {{error.user}} 
                 {{errorUser}}
-            </div>
+            </div> -->
         </div>
     </main>
 </body>

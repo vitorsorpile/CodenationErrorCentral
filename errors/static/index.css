@@ -33,7 +33,6 @@ header
     top: 0;
     left: 0;
 
-    border-bottom: 1px solid black;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -66,9 +65,9 @@ main
     margin-left: 20px;
     height: 40px;
 
-
     margin-bottom: 10px;
 }
+
 .search-bar form
 {
     display: flex;
@@ -113,8 +112,6 @@ tr
 
 th
 {   
-
-    border-top: 1px solid black;
     background-color: #f0f0f5;
     padding: 16px 0;
 
@@ -138,6 +135,12 @@ td a.title
 {
    font-weight: 300; 
 }
+
+td a.title:hover
+{
+    text-decoration: underline;
+}
+
 td span
 {
     padding: 5px 12px;
@@ -151,7 +154,7 @@ td span
 
 .span-wh:hover
 {
-    background-color: #e1e1e6;
+    text-decoration: underline;
 }
 
 button
@@ -213,15 +216,3 @@ button
         text-align: center;
     }
 }
-/* @media(max-width: 1250px)
-{
-    :root
-    {
-        --header-heigth: 100px;
-    }
-
-    header span
-    {
-        padding: 5px;
-    }
-} */

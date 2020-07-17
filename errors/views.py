@@ -82,6 +82,7 @@ def add_error_view(request):
             error.level = request.POST['level']
             error.description = request.POST['description']
             error.address = request.POST['address']
+            error.events = request.POST['events']
             error.user = user
             error.save()
 

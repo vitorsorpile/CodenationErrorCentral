@@ -64,6 +64,11 @@
                 <input type="text" name="address" required>
             </p>
 
+            <p>
+                <label>Eventos:</label>
+                <input type="number" name="events" step="none" required>
+            </p>
+
             {% for field in form%}
                 {% for error in field.errors %}
                     <p style="color: red;">{{error}}</p>
