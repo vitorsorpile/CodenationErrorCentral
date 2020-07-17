@@ -26,3 +26,28 @@ Em projetos modernos é cada vez mais comum o uso de arquiteturas baseadas em se
 | GET | api/error/{error_id} | Retorna os detalhes do erro pelo id |
 | DELETE | api/error/{error_id} | Deleta o erro pelo id |
 | POST | api/error/{error_id} | Arquiva o erro pelo id |
+
+## WEB
+
+* ## [Login](https://vs-errorcentral.herokuapp.com/login)
+
+![login-page](/images/login-page.png)
+
+* ## [Cadastro](https://vs-errorcentral.herokuapp.com/cadastro)
+
+![register-page](/images/register-page.png)
+
+* ## [Listagem dos erros](https://vs-errorcentral.herokuapp.com)
+
+![list-page](images/list-page.png)
+
+* ## [Detalhar erro](https://vs-errorcentral.herokuapp.com/error/1)
+
+![detail-page](images/detail-page.png)
+
+* ## [Adicionar erro](https://vs-errorcentral.herokuapp.com/adderror)
+
+![adderror-page](images/adderror-page.png)
+
+
+
